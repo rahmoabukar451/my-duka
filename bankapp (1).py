@@ -1,6 +1,3 @@
-# TASK 1.Create a class called BankAccount with the attributes: - account number , balance , owner name , date opened 
-# 2.Add some behaviour to the above class using the methods: - deposit() - withdraw() -display_info()
-# 3.Create 2 BankAccount objects that can deposit , withdraw and display amount
 from datetime import date
 date_time = date.today()        
 print(date_time)
