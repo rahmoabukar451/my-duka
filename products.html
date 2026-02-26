@@ -8,6 +8,28 @@
     </div>
 
     <div>
+        <form method="post" action="/add_product">
+            
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">product name</label>
+            <input type="text" name="p_name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Buying price</label>
+            <input type="number" name="b_price" class="form-control" id="exampleInputPassword1">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Selling price</label>
+            <input type="number" name="s_price" class="form-control" id="exampleInputPassword1">
+        </div>
+ 
+        <button type="submit" class="btn btn-primary">Add products</button>
+
+        </form>
+    
+    <div>
+        
         <table id="example" class="table table-striped">
         <thead>
             <tr>
@@ -29,6 +51,7 @@
             {% endfor %}
         </tbody>
         </table>
+    </div>
      
         
     </div>
