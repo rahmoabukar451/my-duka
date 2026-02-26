@@ -1,7 +1,8 @@
 import psycopg2
 
 
-conn = psycopg2.connect(host='localhost',port='5432',user='postgres',password='ramo',dbname='myduka_db')
+
+conn  = psycopg2.connect(host='localhost',port='5432',user='postgres',password='ramo',dbname='myduka_db')
 
 cur = conn.cursor()
 
@@ -24,17 +25,60 @@ def get_products():
 products = get_products()
 print(products)
 
-cur.execute("insert into products(name,buying_price,selling_price)values('bread', 50, 60)")
+cur.execute("insert into products (name,buying_price,selling_price)values('sumsung',20000,30000)")
 conn.commit()
+products=get_products()
 print(products)
+
 
 product1 = ('sumsung',20000,30000)
 product2 = ('hp',30000,40000)
 
 
-def insert_products(product):
-    cursor.execute("insert into products (name,cost,price)values(milk,sugar,mango)",products)
+ 
+ 
+ 
+def get_sales():
+    cur.execute("select * from sales")
+    sales = cur.fetchall()
+    return sales
+
+sales = get_sales()
+print(sales)
+
+
+def insert_sales(pid,quantity):
+    cur.execute("insert into sales (pid,quantity) values (%s,%s)", (pid,quantity))
     conn.commit()
+
+   # sale1 = (3,2)
+   #  sale2 = (4,12)
+    insert_sales(3,2)
+    insert_sales(4,12)
+    all_sales = get_sales()
+    print(all_sales)
+
+
+    def insert_sales(values):
+        cur.execute("insert into sales (pid,quantity) values (%s,%s)", values)
+        conn.commit()
+
+    def insert_stock(values):
+        cur.execute("insert into stock (pid,quantity) values (%s,%s)", (1,30))
+        conn.commit()
+
+    stock1 = (1,30)
+    insert_stock(stock1)
+
+    def get_stock():
+        cur.execute("select * from stock")
+        stock = cur.fetchall()
+        return stock
+    
+    stock_data = get_stock()
+    print(stock_data)
+
+    
 
 
 def get_sales_per_product():
@@ -42,8 +86,8 @@ def get_sales_per_product():
         select products.name as name , sum(sales.quantity * products.selling_price)as sales from 
         sales join products on products.id = sales.pid group by(name);
     """)
-    sales_per_product = get_sales_per_product()
-    print(sales_per_product)
+    sales_per_product = cur.fetchall()
+    return sales_per_product
 
 
 
@@ -52,8 +96,11 @@ def get_sales_per_product():
         select products.name as name , sum(sales.quantity * products.selling_price)as sales from 
         sales join products on products.id = sales.pid group by(name);
     """)
-    sales_per_day = get_sales_per_day()
-    print(sales_per_day)
+    sales_per_day = cur.fetchall()
+    return sales_per_day
+
+
+
 
 
 
@@ -62,8 +109,8 @@ def get_sales_per_product():
         select products.name as p_name , sum(sales.quantity * products.selling_price)as sales from 
         sales join products on products.id = sales.pid group by p_name
     """)
-    get_profit_per_day
-    print(get_sales_per_product)
+    profit_per_product = cur.fetchall()
+    return profit_per_product
     
     
   
@@ -72,7 +119,7 @@ def get_sales_per_product():
         select date(sales.created_at) as day , sum(sales.quantity * products.selling_price)as sales from 
         sales join products on products.id = sales.pid group by(date);
     """)
-    get_profit_per_day
-    print(get_sales_per_day)
+    profit_per_day = cur.fetchall()
+    return profit_per_day
 
     

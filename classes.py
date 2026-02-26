@@ -8,7 +8,7 @@ class person:
     def talks(self):
         print(f"{self.name} talk!!!")
 
-person1 = person("rahmo",20,"rahmo@gmail.com")
+person1 = person("rahmo",20,"rahmo@gmail.com") 
 print(type(person1))
 
   
