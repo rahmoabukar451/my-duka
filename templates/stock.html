@@ -1,32 +1,78 @@
 { % extends 'base.html' %}
 { % block title %} stock { % endblock %}
 { % block content %}
+<div>
+    <p>this is the stock page</p>
     <div>
-        <p>this is the stock page</p>
-         <div>
-        <table id="example" class="table table-striped">
-        <thead>
-            <tr>
-                <th>product id</th>
-                <th>product name</th>
-                <th>buying price</th>
-                <th>selling price</th>
-               
-            </tr>
-        </thead>
-        <tbody>
-            {% for product in products %}
-            <tr>
-                <td>{{ product[0] }}</td>
-                <td>{{product[1] }}</td>
-                <td>{{product[2] }}</td>
-                <td>{{product[3] }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-        </table>
-     
-        
-    </div>
-    </div>
-{ % endblock %}
+        <div>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                add stock
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form method="post " action="/add-stock">
+                                <div class="mb-3">
+                                    <select class="form-select" aria-label="Default select example">
+                                        <option selected>select product</option>
+                                        {% for product in products %}
+                                        <option value="{{ product[1] }}">{{ product[1] }}</option> milk - 1
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">stock quantity</label>
+                                    <input type="number" class="form-control" id="exampleInputPassword1">
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">add stock</button>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+            </div>
+            <div>
+                <table id="example" class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>stock id</th>
+                            <th>product name</th>
+                            <th>buying price</th>
+                            <th>selling price</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for stock in stock_data %}
+                        <tr>
+                            <td>{{ stock[0] }}</td>
+                            <td>{{stock[1] }}</td>
+                            <td>{{stock[2] }}</td>
+                            <td>{{stock[3] }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+
+            </div>
+        </div>
+        { % endblock %}
