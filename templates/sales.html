@@ -3,14 +3,62 @@
 {% block content %}
 <div>
     <p>this is the sales page</p>
+    <div>
+        <button type="button" class="btn btn-primary" data-bs-toggle="model" data-bs-target="#examplemodel">launch demo model
+             
+        </button>
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="mb-3">
+                                      
+                                    <label for="exampleInputPassword1">email adress</label>
+                                    <input type="email" class="form-control" id="exampleInputemail1"aria-describedby="emailHelp">
+                                <div id="emailHelp" class="form-text">
+                                    we,ll never share your email with anyone else.
+                                </div>
+                                   
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputPassword1">password</label>
+                                    <input type="password" class="form-control" id="exampleInputPassword1">
+                                </div>
+                                 <div class="mb-3 form-check">
+                                    <label for="exampleInputPassword1">check me out</label>
+                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">save changes</button>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+            </div>
+    </div>
    
         <table id="example" class="table table-striped">
             <thead>
                 <tr>
                     <th>sales id</th>
-                    <th>product name</th>
-                    <th>buying price</th>
-                    <th>selling price</th>
+                    <th>product id</th>
+                    <th>quantity</th>
+                    <th>create at</th>
 
                 </tr>
             </thead>
