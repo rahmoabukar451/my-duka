@@ -30,6 +30,7 @@ print(products)
 
 
 
+
  
 
 cur.execute("insert into products (name,buying_price,selling_price)values('sumsung',20000,30000)")
@@ -148,6 +149,10 @@ def check_user(email):
     cur.execute("select * from users where email = %s", (email,))
     user = cur.fetchone()
     return user 
+
+user = check_user('rahmo@mail.com')
+print(user)
+(1,'rahmo','rahmo@mail.com','0114594969','$')
 
 
 
