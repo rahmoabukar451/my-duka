@@ -1,16 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <div class="container">
-        <div>
-            <p>this is the login page</p>
-        </div>
-
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+{% block content %}
+<div>
+    <div>
+        <p>thi is the login page</p>
     </div>
-</body>
-</html>
+    <div>
+        <form method="POST" action="/login">
+            <div class="mb-3">
+                <label for="email" class="form-label">email adress</label>
+                <input type="text" class="form-control" id="exampleinputemail" arial-describedby="emailhelp" name="email" required>
+            </div>
+            <div class="mb-3">
+                <label for="exampleinputpassword1" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+
+</div>
+{% endblock %}

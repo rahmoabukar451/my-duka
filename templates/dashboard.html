@@ -7,10 +7,10 @@
   </div>
   <div>
     <div>
-      <canvas id="bar-chart-grouped" width="838" height="458"></canvas>
+      <canvas id="bar-chart-grouped" width="800" height="450"></canvas>
     </div>
     <div>
-      <canvas id="line-chart" width="838" height="458"></canvas>
+      <canvas id="line-chart" width="800" height="450"></canvas>
     </div>
   </div>
 
@@ -27,11 +27,11 @@
       label: "sales",
       backgroundColor: "#3e95cd",
       data: {{ sales_data| safe}}
-            }, {
+      }, {
       label: "profits",
       backgroundColor: "#8e5ea2",
       data: {{ profit_data| safe}}
-            }
+      }
   ]
     },
     options: {
@@ -52,8 +52,8 @@
     borderColor: "#3e95cd",
     fill: false
           }, {
-      data: {{ profit_data| safe}},
-    label: "profits",
+      data: {{ profit_day| safe}},
+    label: "profit",
     borderColor: "#8e5ea2",
     fill: false
           },
