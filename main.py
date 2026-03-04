@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session
-from database import get_products,insert_sales,get_stock,available_stock,create_user,check_user,get_sales_per_product,get_sales,get_data,get_stock_data
-from flask_bcrypt import bcrypt
+from database import get_products,get_sales,insert_sales,get_stock,available_stock,create_user,get_sales_per_product,get_stock_data
+from flask_bcrypt import Bcrypt
+from database import check_user
 from functools import wraps
 
 
@@ -10,7 +11,7 @@ app = Flask(__name__)
 
 app.secret_key = 'ramo'  # Set a secret key for session management and flash messages
 
-
+bcrypt = Bcrypt(app)
 
 
 
@@ -121,7 +122,7 @@ def login():
         email = request.form['email']
         password = request.form['password']
 
-        exiting_user = check_user(email)
+        exiting_user =check_user(email)
         if not exiting_user:
 
                 flash("user does not exist, please register",'danger')
