@@ -1,70 +1,78 @@
 {% extends "base.html" %}
 {% block title %} dashboard {% endblock %}
 {% block content %}
-<div class="container">
+<div>
   <div>
-    <p>this is the dashboard page</p>
+    <p>This is the dash page</p>
   </div>
+
   <div>
+    <!-- bar chart -->
     <div>
       <canvas id="bar-chart-grouped" width="800" height="450"></canvas>
     </div>
+
+    <!-- line chart -->
     <div>
       <canvas id="line-chart" width="800" height="450"></canvas>
     </div>
   </div>
-
-
-
 </div>
+
+
 <script>
+  //bar chart
   new Chart(document.getElementById("bar-chart-grouped"), {
     type: 'bar',
     data: {
-      labels: {{ product_names| safe}},
+      labels: {{ product_name | safe }},
     datasets: [
     {
-      label: "sales",
+      label: "Sales",
       backgroundColor: "#3e95cd",
-      data: {{ sales_data| safe}}
-      }, {
-      label: "profits",
+      data: {{ sales_product | safe}}
+                }, {
+      label: "Profit",
       backgroundColor: "#8e5ea2",
-      data: {{ profit_data| safe}}
-      }
+      data: {{ profit_product | safe}}
+                }
   ]
-    },
-    options: {
-      title: {
-        display: true,
-        text: 'Population growth (millions)'
-      }
-  }   
-});
-
-  new Chart(document.getElementById("line-chart"), {
-    type: 'line',
-    data: {
-      labels: {{ day | safe}},
-    datasets: [{
-      data: {{ sales_data| safe}},
-    label: "sales",
-    borderColor: "#3e95cd",
-    fill: false
-          }, {
-      data: {{ profit_day| safe}},
-    label: "profit",
-    borderColor: "#8e5ea2",
-    fill: false
-          },
-  ]
-    },
+        },
     options: {
     title: {
       display: true,
-      text: 'sales and profit per day(Ksh)'
+      text: 'Sales & Profit per Product (Ksh.)'
     }
   }
-});
+    });
+
+
+
+  //line chart
+  new Chart(document.getElementById("line-chart"), {
+    type: 'line',
+    data: {
+      labels: {{ day | safe }},
+    datasets: [{
+      data: {{ sales_day | safe }},
+    label: "Sales",
+    borderColor: "#3e95cd",
+    fill: false
+            }, {
+      data: {{ profit_day | safe }},
+    label: "Profit",
+    borderColor: "#8e5ea2",
+    fill: false
+            },
+  ]
+        },
+    options: {
+    title: {
+      display: true,
+      text: 'Sales and Profit per Day (Ksh.)'
+    }
+  }
+    });
+
 </script>
 {% endblock %}
